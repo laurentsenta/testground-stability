@@ -33,13 +33,13 @@ jobs:
         shell: bash
         id: run
         run: |
-          testground healthcheck --runner ${{ inputs.testground_runner }} --fix
           testground plan import --from ./libp2p --name libp2p;
 
           if [ "${{ inputs.testground_runner }}" == "cluster:k8s" ]; then
-            testground run composition -f ./libp2p/ping/_compositions/simple.k8s.toml | tee run.out
+            testground run composition -f ./libp2p/ping/_compositions/simple.k8s.toml | tee run.out;
           else
-            testground run composition -f ./libp2p/ping/_compositions/simple.ci.toml | tee run.out
+            testground healthcheck --runner ${{ inputs.testground_runner }} --fix;
+            testground run composition -f ./libp2p/ping/_compositions/simple.ci.toml | tee run.out;
           fi
 
           ./check_result.sh;
