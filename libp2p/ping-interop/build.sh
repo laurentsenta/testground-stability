@@ -25,21 +25,26 @@ docker pull golang:1.14-buster
 mkdir -p ${HOME}/testground/plans/libp2p # TODO: find if we can remove this, maybe create a ticket.
 testground plan import --from ${SCRIPT_DIR} --name "libp2p/ping-interop"
 
+PROXY_PARAMS=()
+
+if [ -z "${TESTGROUND_ENDPOINT}" ]; then
+    echo "using goproxy.io (assuming testground runs in CI)"
+    PROXY_PARAMS+=(--build-cfg go_proxy_mode="remote" --build-cfg go_proxy_url="https://goproxy.io")
+fi
+
 # TODO: according to the doc this should work: `--dep github.com/libp2p/go-libp2p=${INPUT_VERSION_A}`
 #       but it doesn't, we need to pass the long form.
 testground build single --wait \
     --builder docker:go \
+    "${PROXY_PARAMS[@]}" \
     --dep github.com/libp2p/go-libp2p=github.com/libp2p/go-libp2p@${INPUT_VERSION_A} \
-    --build-cfg go_proxy_mode="remote" \
-    --build-cfg go_proxy_url="https://goproxy.io" \
     --plan libp2p/ping-interop/${INPUT_TESTPLAN_A} 2>&1 | tee build.out
 export ARTIFACT_VERSION_A=$(awk -F\" '/generated build artifact/ {print $8}' <build.out)
 
 testground build single --wait \
     --builder docker:go \
     --dep github.com/libp2p/go-libp2p=github.com/libp2p/go-libp2p@${INPUT_VERSION_B} \
-    --build-cfg go_proxy_mode="remote" \
-    --build-cfg go_proxy_url="https://goproxy.io" \
+    "${PROXY_PARAMS[@]}" \
     --plan libp2p/ping-interop/${INPUT_TESTPLAN_B} 2>&1 | tee build.out
 export ARTIFACT_VERSION_B=$(awk -F\" '/generated build artifact/ {print $8}' <build.out)
 

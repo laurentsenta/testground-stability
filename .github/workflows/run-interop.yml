@@ -37,6 +37,7 @@ jobs:
           INPUT_VERSION_A: v0.19.1
           INPUT_VERSION_B: v0.11.0
           INPUT_TESTPLAN_B: go-v0.11
+          TESTGROUND_ENDPOINT: ${{ inputs.testground_endpoint }}
 
       - name: run the test
         shell: bash
