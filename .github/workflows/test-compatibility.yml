@@ -1,0 +1,77 @@
+name: Test libp2p Compatibility
+
+on:
+  workflow_call:
+    inputs:
+      testsuite:
+        required: true
+        type: string
+      testplan_a:
+        required: true
+        type: string
+      version_a:
+        required: true
+        type: string
+      testplan_b:
+        required: true
+        type: string
+      version_b:
+        required: true
+        type: string
+      testcase:
+        required: true
+        type: string
+      testground_endpoint:
+        required: false
+        type: string
+jobs:
+  run_test:
+    name: Run a test with different versions
+    runs-on: ubuntu-latest
+    env:
+      INPUT_TESTSUITE: ${{ inputs.testsuite }}
+      INPUT_TESTPLAN_A: ${{ inputs.testplan_a }}
+      INPUT_VERSION_A: ${{ inputs.version_a }}
+      INPUT_TESTPLAN_B: ${{ inputs.testplan_b }}
+      INPUT_VERSION_B: ${{ inputs.version_b }}
+      INPUT_TESTCASE: ${{ inputs.testcase }}
+      TESTGROUND_ENDPOINT: ${{ inputs.testground_endpoint }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: setup testground
+        uses: ./.github/actions/setup-testground
+
+      - name: build the test plan
+        shell: bash
+        run: ./build.sh
+        working-directory: ./${INPUT_TESTSUITE}
+
+      - name: Run testground plan (sdk-rust)
+        id: run
+        uses: laurentsenta/testground-github-actions/run-composition@master
+        with:
+          backend_endpoint: ${{ inputs.testground_endpoint || 'http://localhost:8042' }}
+          plan_directory: ./${INPUT_TESTSUITE}
+          composition_file: ./${INPUT_TESTSUITE}/_compositions/2-versions.toml
+
+      - name: Collect test ouputs
+        if: ${{ steps.run.outputs.testground_id && (success() || failure()) }}
+        shell: bash
+        run: |
+          testground collect \
+            --runner=local:docker \
+            --output ~/testground_output.tgz \
+            "${{ steps.run.outputs.testground_id }}"
+
+      - uses: actions/upload-artifact@v3
+        if: ${{ success() || failure() }}
+        with:
+          name: testground-output
+          path: |
+            ~/testground_output.tgz
+            ~/daemon.out

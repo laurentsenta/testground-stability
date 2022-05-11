@@ -1,0 +1,14 @@
+[metadata]
+  name = "basic"
+
+[global]
+  plan = "libp2p/ping"
+  case = "ping"
+  total_instances = 2
+  builder = "docker:go"
+  runner = "local:docker"
+
+[[groups]]
+  id = "regular"
+  instances = { count = 2 }
+

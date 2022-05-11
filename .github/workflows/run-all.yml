@@ -1,0 +1,66 @@
+name: "run all"
+
+on: [push]
+
+jobs:
+  ## Libp2p Interop
+
+  run_libp2p_interop_on_local_docker:
+    uses: ./.github/workflows/run-interop.yml
+    with:
+      # testground_endpoint: local
+      testground_runner: local:docker
+      collect_name: run_libp2p_interop_on_local_docker
+
+  run_libp2p_interop_on_remote_docker:
+    uses: ./.github/workflows/run-interop.yml
+    with:
+      testground_endpoint: http://staging.ipdx.testground.ipfs.team
+      testground_runner: local:docker
+      collect_name: run_libp2p_interop_on_remote_docker
+
+  ## Libp2p Ping
+
+  run_libp2p_ping_on_local_docker:
+    uses: ./.github/workflows/run-ping.yml
+    with:
+      # testground_endpoint: local
+      testground_runner: local:docker
+      collect_name: run_libp2p_ping_on_local_docker
+
+  run_libp2p_ping_on_remote_docker:
+    uses: ./.github/workflows/run-ping.yml
+    with:
+      testground_endpoint: http://staging.ipdx.testground.ipfs.team
+      testground_runner: local:docker
+      collect_name: run_libp2p_ping_on_remote_docker
+
+  run_libp2p_ping_on_remote_k8s:
+    uses: ./.github/workflows/run-ping.yml
+    with:
+      testground_endpoint: https://ci.testground.ipfs.team
+      testground_runner: cluster:k8s
+      collect_name: run_libp2p_ping_on_remote_k8s
+
+  ## Examples: Ping Pong
+
+  run_examples_pingpong_on_local_docker:
+    uses: ./.github/workflows/run-ping-pong.yml
+    with:
+      # testground_endpoint: local
+      testground_runner: local:docker
+      collect_name: run_libp2p_ping_on_local_docker
+
+  run_examples_pingpong_on_remote_docker:
+    uses: ./.github/workflows/run-ping-pong.yml
+    with:
+      testground_endpoint: http://staging.ipdx.testground.ipfs.team
+      testground_runner: local:docker
+      collect_name: run_libp2p_ping_on_remote_docker
+
+  run_examples_pingpong_on_remote_k8s:
+    uses: ./.github/workflows/run-ping-pong.yml
+    with:
+      testground_endpoint: https://ci.testground.ipfs.team
+      testground_runner: cluster:k8s
+      collect_name: run_libp2p_ping_on_remote_k8s
