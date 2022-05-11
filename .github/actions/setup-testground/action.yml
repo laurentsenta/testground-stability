@@ -12,7 +12,7 @@ runs:
       run: mkdir ${PWD}/binaries && echo ${PWD}/binaries >> $GITHUB_PATH
     - name: extract binary (until we have binary distribution)
       shell: bash
-      run: docker cp `docker create lsenta/testground:edge`:/testground "${PWD}/binaries/testground"
+      run: docker cp `docker create iptestground/testground:edge`:/testground "${PWD}/binaries/testground"
     - name: Pull containers
       shell: bash
       run: |
