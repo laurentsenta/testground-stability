@@ -30,12 +30,16 @@ testground plan import --from ${SCRIPT_DIR} --name "libp2p/ping-interop"
 testground build single --wait \
     --builder docker:go \
     --dep github.com/libp2p/go-libp2p=github.com/libp2p/go-libp2p@${INPUT_VERSION_A} \
+    --build-cfg go_proxy_mode="remote" \
+    --build-cfg go_proxy_url="https://goproxy.io" \
     --plan libp2p/ping-interop/${INPUT_TESTPLAN_A} 2>&1 | tee build.out
 export ARTIFACT_VERSION_A=$(awk -F\" '/generated build artifact/ {print $8}' <build.out)
 
 testground build single --wait \
     --builder docker:go \
     --dep github.com/libp2p/go-libp2p=github.com/libp2p/go-libp2p@${INPUT_VERSION_B} \
+    --build-cfg go_proxy_mode="remote" \
+    --build-cfg go_proxy_url="https://goproxy.io" \
     --plan libp2p/ping-interop/${INPUT_TESTPLAN_B} 2>&1 | tee build.out
 export ARTIFACT_VERSION_B=$(awk -F\" '/generated build artifact/ {print $8}' <build.out)
 
