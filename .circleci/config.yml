@@ -96,13 +96,22 @@ jobs:
       - setup-install-bins
       - run:
           name: run ping
-          command: ./circle/ping.sh
+          command: ./circle/ping.sh || true
       - run:
           name: run ping
-          command: ./circle/ping-pong.sh
+          command: ./circle/ping-pong.sh || true
       - run:
           name: run ping
-          command: ./circle/interop.sh
+          command: ./circle/interop.sh || true
+
+      - store_artifacts:
+          path: ~/daemon.out
+          destination: daemon.out
+
+      - store_artifacts:
+          path: ~/testground
+          destination: testground
+
       # - run:
       #     name: "create kind cluster"
       #     command: make kind-cluster
