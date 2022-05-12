@@ -47,6 +47,11 @@ jobs:
 
           ./check_result.sh;
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ failure() }}
+        timeout-minutes: 3
+
       - name: Collect test ouputs
         shell: bash
         if: ${{ steps.run.outputs.testground_id && (success() || failure()) }}
