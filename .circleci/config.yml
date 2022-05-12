@@ -1,0 +1,116 @@
+---
+version: 2.1
+
+parameters:
+  go-version:
+    type: string
+    default: "1.16"
+  workspace-dir:
+    type: string
+    default: "/home/circleci"
+
+commands:
+  setup:
+    description: "install go, checkout and restore cache"
+    steps:
+      # - run:
+      #     name: "install go"
+      #     command: |
+      #       curl --create-dirs -o $GOPATH/go.tar.gz https://dl.google.com/go/go${GOVERSION}.linux-amd64.tar.gz
+      #       tar --strip-components=1 -C $GOPATH -xzf $GOPATH/go.tar.gz
+      #       rm -rf $GOPATH/go.tar.gz
+      - checkout
+      # - restore_cache:
+      #     keys:
+      #       - 'v2-pkg-cache-{{ checksum "go.sum" }}-{{ .Environment.GOVERSION }}'
+      #       - 'bin-cache-{{ .Branch }}'
+  setup-install-bins:
+    description: "install 3rd-party binaries for integration tests"
+    steps:
+      - setup
+      - run:
+          name: 'install testground'
+          command: |
+            if [ ! -f ~/bin/testground ]; then
+              ./circle/setup.sh
+            fi
+      # - run:
+      #     name: "install kubectl"
+      #     command: |
+      #       if [ ! -f ~/bin/kubectl ]; then
+      #       curl -L https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl -o ~/bin/kubectl
+      #       chmod +x ~/bin/kubectl
+      #       fi
+      # - run:
+      #     name: "install kind"
+      #     command: |
+      #       if [ ! -f ~/bin/kind ]; then
+      #       curl -L https://github.com/kubernetes-sigs/kind/releases/download/v0.8.1/kind-linux-amd64 -o ~/bin/kind
+      #       chmod +x ~/bin/kind
+      #       fi
+      - save_cache:
+          key: 'bin-cache-{{ .Branch }}'
+          paths:
+            - << pipeline.parameters.workspace-dir >>/bin
+
+executors:
+  linux:
+    machine:
+      image: ubuntu-2004:202107-02
+      docker_layer_caching: true
+    resource_class: large
+    working_directory: << pipeline.parameters.workspace-dir >>/project
+    environment:
+      GOPATH: << pipeline.parameters.workspace-dir >>/go/<< pipeline.parameters.go-version >>
+      PATH: << pipeline.parameters.workspace-dir >>/go/<< pipeline.parameters.go-version >>/bin:<< pipeline.parameters.workspace-dir >>/bin:/usr/local/bin:/usr/bin:/bin
+      GOVERSION: << pipeline.parameters.go-version >>
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      # - prepare-tidy
+      - build-test-linux
+          # requires:
+          #   - prepare-tidy
+
+jobs:
+  # prepare-tidy:
+  #   executor: linux
+  #   steps:
+  #     - setup
+
+  build-test-linux:
+    executor: linux
+    steps:
+      - setup-install-bins
+      - run:
+          name: run ping
+          command: ./circle/ping.sh
+      - run:
+          name: run ping
+          command: ./circle/ping-pong.sh
+      - run:
+          name: run ping
+          command: ./circle/interop.sh
+      # - run:
+      #     name: "create kind cluster"
+      #     command: make kind-cluster
+      # - run:
+      #     name: "run cluster:k8s integration tests"
+      #     command: make test-integ-cluster-k8s
+      # - run:
+      #     name: "run local:docker integration tests"
+      #     command: make test-integ-local-docker
+      # - run:
+      #     name: "run local:exec integration tests"
+      #     command: make test-integ-local-exec
+
+  # build-macos:
+  #   macos:
+  #     xcode: 13.2.0
+  #   steps:
+  #     - setup-macos
+  #     - run:
+  #         name: "build testground"
+  #         command: make goinstall
