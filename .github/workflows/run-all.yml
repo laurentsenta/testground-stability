@@ -49,18 +49,18 @@ jobs:
     with:
       # testground_endpoint: local
       testground_runner: local:docker
-      collect_name: run_libp2p_ping_on_local_docker
+      collect_name: run_examples_pingpong_on_local_docker
 
   run_examples_pingpong_on_remote_docker:
     uses: ./.github/workflows/run-ping-pong.yml
     with:
       testground_endpoint: http://staging.ipdx.testground.ipfs.team
       testground_runner: local:docker
-      collect_name: run_libp2p_ping_on_remote_docker
+      collect_name: run_examples_pingpong_on_remote_docker
 
   run_examples_pingpong_on_remote_k8s:
     uses: ./.github/workflows/run-ping-pong.yml
     with:
       testground_endpoint: https://ci.testground.ipfs.team
       testground_runner: cluster:k8s
-      collect_name: run_libp2p_ping_on_remote_k8s
+      collect_name: run_examples_pingpong_on_remote_k8s
