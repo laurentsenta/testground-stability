@@ -21,9 +21,9 @@
 [[groups]]
   id = "simple"
   instances = { count = 2 }
-  [groups.resources]
-    memory = "512Mi"
-    cpu = "500m"
+  # [groups.resources]
+  #   memory = "512Mi"
+  #   cpu = "500m"
 
 # [[groups]]
 #   id = "requestors"
