@@ -53,6 +53,11 @@ jobs:
             --output ~/testground_output.tgz \
             "${{ steps.run.outputs.testground_id }}"
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ failure() }}
+        timeout-minutes: 3
+
       - uses: actions/upload-artifact@v3
         if: ${{ success() || failure() }}
         with:
