@@ -29,9 +29,21 @@ commands:
     steps:
       - setup
       - run:
-          name: 'install testground'
+          name: 'prepare testground'
           command: |
-            ./circle/setup.sh
+            docker cp `docker create lsenta/testground:edge`:/testground ~/bin/testground
+            docker pull iptestground/sidecar:edge
+            docker pull iptestground/sync-service:latest
+      - run:
+          name: 'run testground'
+          command: |
+            testground daemon | tee ~/daemon.out
+          background: true
+      - run:
+          name: 'healthcheck'
+          command: |
+            sleep 60
+            testground healthcheck --runner local:docker --fix
       # - run:
       #     name: "install kubectl"
       #     command: |
