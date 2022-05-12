@@ -31,9 +31,7 @@ commands:
       - run:
           name: 'install testground'
           command: |
-            if [ ! -f ~/bin/testground ]; then
-              ./circle/setup.sh
-            fi
+            ./circle/setup.sh
       # - run:
       #     name: "install kubectl"
       #     command: |
