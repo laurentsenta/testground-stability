@@ -1,0 +1,78 @@
+name: Run Ping (libp2p) Workflow
+on:
+  workflow_call:
+    inputs:
+      testground_endpoint:
+        description: testground_endpoint
+        required: false
+        type: string
+      testground_runner:
+        description: testground_runner
+        required: true
+        default: 'local:docker'
+        type: string
+      collect_name:
+        description: collect_name
+        required: true
+        type: string
+jobs:
+  run_test:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: setup testground
+        uses: ./.github/actions/setup-testground
+        with:
+          testground_endpoint: ${{ inputs.testground_endpoint }}
+
+
+      - name: run the test
+        shell: bash
+        id: run
+        run: |
+          testground plan import --from ./sdk-rust --name sdk-rust;
+
+          if [ "${{ inputs.testground_runner }}" == "cluster:k8s" ]; then
+            testground run single \
+              --plan=sdk-rust \
+              --testcase=example \
+              --builder=docker:generic \
+              --runner=${{ inputs.testground_runner }} \
+              --instances=1 | tee run.out
+          else
+            testground healthcheck --runner ${{ inputs.testground_runner }} --fix;
+            testground run single \
+              --plan=sdk-rust \
+              --testcase=example \
+              --builder=docker:generic \
+              --runner=${{ inputs.testground_runner }} \
+              --instances=1 | tee run.out
+          fi
+
+          ./check_result.sh;
+
+      - name: Collect test ouputs
+        shell: bash
+        if: ${{ steps.run.outputs.testground_id && (success() || failure()) }}
+        run: |
+          testground collect \
+            --runner=${{ inputs.testground_runner }} \
+            --output ~/testground_output.tgz \
+            "${{ steps.run.outputs.testground_id }}"
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ failure() }}
+        timeout-minutes: 3
+
+      - uses: actions/upload-artifact@v3
+        if: ${{ success() || failure() }}
+        with:
+          name: ${{ inputs.collect_name }}
+          path: |
+            ~/testground_output.tgz
+            ~/daemon.out
+
