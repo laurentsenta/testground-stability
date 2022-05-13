@@ -2,7 +2,7 @@
 set -x
 set -e
 
-RUN_IDS=$(gh api repos/laurentsenta/testground-stability/actions/runs --jq '.workflow_runs[] | .id')
+RUN_IDS=$(gh api repos/laurentsenta/testground-stability/actions/runs --paginate --jq '.workflow_runs[] | .id')
 
 echo > output.json
 
