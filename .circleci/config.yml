@@ -85,34 +85,71 @@ workflows:
   main:
     jobs:
       # - prepare-tidy
-      - build-test-linux
+      # - build-test-linux
           # requires:
           #   - prepare-tidy
-
+      - libp2p-ping
+      - example-ping-pong
+      - libp2p-rust
+      - libp2p-interop
 jobs:
   # prepare-tidy:
   #   executor: linux
   #   steps:
   #     - setup
 
-  build-test-linux:
+  libp2p-ping:
     executor: linux
     steps:
       - setup-install-bins
       - run:
           name: run ping
-          command: ./circle/ping.sh || true
-      - run:
-          name: run ping
-          command: ./circle/ping-pong.sh || true
-      - run:
-          name: run ping
-          command: ./circle/interop.sh || true
-
+          command: ./circle/ping.sh
       - store_artifacts:
           path: ~/daemon.out
           destination: daemon.out
+      - store_artifacts:
+          path: ~/testground
+          destination: testground
 
+  example-ping-pong:
+    executor: linux
+    steps:
+      - setup-install-bins
+      - run:
+          name: run ping-pong
+          command: ./circle/ping-pong.sh || true
+      - store_artifacts:
+          path: ~/daemon.out
+          destination: daemon.out
+      - store_artifacts:
+          path: ~/testground
+          destination: testground
+
+  libp2p-rust:
+    executor: linux
+    steps:
+      - setup-install-bins
+      - run:
+          name: run rust
+          command: ./circle/rust.sh
+      - store_artifacts:
+          path: ~/daemon.out
+          destination: daemon.out
+      - store_artifacts:
+          path: ~/testground
+          destination: testground
+
+  libp2p-interop:
+    executor: linux
+    steps:
+      - setup-install-bins
+      - run:
+          name: run interop
+          command: ./circle/interop.sh
+      - store_artifacts:
+          path: ~/daemon.out
+          destination: daemon.out
       - store_artifacts:
           path: ~/testground
           destination: testground
