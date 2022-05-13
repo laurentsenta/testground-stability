@@ -7,32 +7,33 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Inject testground into PATH
-      shell: bash
-      run: mkdir ${PWD}/binaries && echo ${PWD}/binaries >> $GITHUB_PATH
-    - name: extract binary (until we have binary distribution)
-      shell: bash
-      run: docker cp `docker create lsenta/testground:edge`:/testground "${PWD}/binaries/testground"
-    - name: Pull containers
-      shell: bash
-      run: |
-        docker pull iptestground/sidecar:edge
-        docker pull iptestground/sync-service:latest
-    # - name: Checkout testground
-    #   uses: actions/checkout@v2
-    #   with:
-    #     path: testground
-    #     repository: testground/testground
-
-    # - name: Setup Go
-    #   uses: actions/setup-go@v2
-    #   with:
-    #     go-version: "1.16.x"
-
-    # - name: Install testground
-    #   run: make install
-    #   working-directory: testground
+    # - name: Inject testground into PATH
     #   shell: bash
+    #   run: mkdir ${PWD}/binaries && echo ${PWD}/binaries >> $GITHUB_PATH
+    # - name: extract binary (until we have binary distribution)
+    #   shell: bash
+    #   run: docker cp `docker create lsenta/testground:edge`:/testground "${PWD}/binaries/testground"
+    # - name: Pull containers
+    #   shell: bash
+    #   run: |
+    #     docker pull iptestground/sidecar:edge
+    #     docker pull iptestground/sync-service:latest
+
+    - name: Checkout testground
+      uses: actions/checkout@v2
+      with:
+        path: testground
+        repository: testground/testground
+
+    - name: Setup Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: "1.16.x"
+
+    - name: Install testground
+      run: make install
+      working-directory: testground
+      shell: bash
 
     - name: Run testground daemon
       if: ${{ inputs.testground_endpoint == '' }}
