@@ -13,27 +13,32 @@ commands:
   setup:
     description: "install go, checkout and restore cache"
     steps:
-      # - run:
-      #     name: "install go"
-      #     command: |
-      #       curl --create-dirs -o $GOPATH/go.tar.gz https://dl.google.com/go/go${GOVERSION}.linux-amd64.tar.gz
-      #       tar --strip-components=1 -C $GOPATH -xzf $GOPATH/go.tar.gz
-      #       rm -rf $GOPATH/go.tar.gz
+      - run:
+          name: "install go"
+          command: |
+            curl --create-dirs -o $GOPATH/go.tar.gz https://dl.google.com/go/go${GOVERSION}.linux-amd64.tar.gz
+            tar --strip-components=1 -C $GOPATH -xzf $GOPATH/go.tar.gz
+            rm -rf $GOPATH/go.tar.gz
       - checkout
+      - run:
+          name: clone testground
+          command: |
+            git clone git@github.com:testground/testground.git
+            cd testground && GOBIN=~/bin make install
       # - restore_cache:
       #     keys:
-      #       - 'v2-pkg-cache-{{ checksum "go.sum" }}-{{ .Environment.GOVERSION }}'
+      #       - 'v1-pkg-cache-{{ checksum "go.sum" }}-{{ .Environment.GOVERSION }}'
       #       - 'bin-cache-{{ .Branch }}'
   setup-install-bins:
     description: "install 3rd-party binaries for integration tests"
     steps:
       - setup
-      - run:
-          name: 'prepare testground'
-          command: |
-            docker cp `docker create lsenta/testground:edge`:/testground ~/bin/testground
-            docker pull iptestground/sidecar:edge
-            docker pull iptestground/sync-service:latest
+      # - run:
+      #     name: 'prepare testground'
+      #     command: |
+      #       docker cp `docker create lsenta/testground:edge`:/testground ~/bin/testground
+      #       docker pull iptestground/sidecar:edge
+      #       docker pull iptestground/sync-service:latest
       - run:
           name: 'run testground'
           command: |
@@ -42,7 +47,7 @@ commands:
       - run:
           name: 'healthcheck'
           command: |
-            sleep 60
+            sleep 120
             testground healthcheck --runner local:docker --fix
       # - run:
       #     name: "install kubectl"
