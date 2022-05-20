@@ -14,7 +14,7 @@ function lazy() {
         git add $i.txt;
         git commit -m"$i";
         git push origin trigger-many:trigger-many;
-        sleep 30;
+        sleep 10;
     done;
 }
 
