@@ -49,7 +49,8 @@ jobs:
               --testcase=example \
               --builder=docker:generic \
               --runner=${{ inputs.testground_runner }} \
-              --instances=1 | tee run.out
+              --instances=1 \
+              -- wait | tee run.out
           fi
 
           ./check_result.sh;
