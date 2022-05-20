@@ -1,0 +1,33 @@
+name: "run local"
+
+on:
+  push:
+  schedule:
+    - cron:  '*/30 * * * *'
+
+
+jobs:
+  run_libp2p_interop_on_local_docker:
+    uses: ./.github/workflows/run-interop.yml
+    with:
+      # testground_endpoint: local
+      testground_runner: local:docker
+      collect_name: run_libp2p_interop_on_local_docker
+  run_libp2p_ping_on_local_docker:
+    uses: ./.github/workflows/run-ping.yml
+    with:
+      # testground_endpoint: local
+      testground_runner: local:docker
+      collect_name: run_libp2p_ping_on_local_docker
+  run_examples_pingpong_on_local_docker:
+    uses: ./.github/workflows/run-ping-pong.yml
+    with:
+      # testground_endpoint: local
+      testground_runner: local:docker
+      collect_name: run_examples_pingpong_on_local_docker
+  run_sdk_rust_on_local_docker:
+    uses: ./.github/workflows/run-rust.yml
+    with:
+      # testground_endpoint: local
+      testground_runner: local:docker
+      collect_name: run_sdk_rust_on_local_docker

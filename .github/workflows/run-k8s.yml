@@ -1,0 +1,15 @@
+name: "run k8s"
+
+on:
+  push:
+  schedule:
+    - cron:  '*/30 * * * *'
+
+
+jobs:
+  run_libp2p_ping_on_remote_k8s:
+    uses: ./.github/workflows/run-ping.yml
+    with:
+      testground_endpoint: https://ci.testground.ipfs.team
+      testground_runner: cluster:k8s
+      collect_name: run_libp2p_ping_on_remote_k8s
