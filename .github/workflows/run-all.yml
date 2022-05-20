@@ -66,13 +66,13 @@ jobs:
       testground_runner: local:docker
       collect_name: run_examples_pingpong_on_remote_docker
 
-  run_examples_pingpong_on_remote_k8s:
-    concurrency: remote_k8s
-    uses: ./.github/workflows/run-ping-pong.yml
-    with:
-      testground_endpoint: https://ci.testground.ipfs.team
-      testground_runner: cluster:k8s
-      collect_name: run_examples_pingpong_on_remote_k8s
+  # run_examples_pingpong_on_remote_k8s:
+  #   concurrency: remote_k8s
+  #   uses: ./.github/workflows/run-ping-pong.yml
+  #   with:
+  #     testground_endpoint: https://ci.testground.ipfs.team
+  #     testground_runner: cluster:k8s
+  #     collect_name: run_examples_pingpong_on_remote_k8s
 
   ## Examples: SDK Rust
 
@@ -91,10 +91,10 @@ jobs:
       testground_runner: local:docker
       collect_name: run_sdk_rust_on_remote_docker
 
-  run_sdk_rust_on_remote_k8s:
-    concurrency: remote_k8s
-    uses: ./.github/workflows/run-rust.yml
-    with:
-      testground_endpoint: https://ci.testground.ipfs.team
-      testground_runner: cluster:k8s
-      collect_name: run_sdk_rust_on_remote_k8s
+  # run_sdk_rust_on_remote_k8s:
+  #   concurrency: remote_k8s
+  #   uses: ./.github/workflows/run-rust.yml
+  #   with:
+  #     testground_endpoint: https://ci.testground.ipfs.team
+  #     testground_runner: cluster:k8s
+  #     collect_name: run_sdk_rust_on_remote_k8s
