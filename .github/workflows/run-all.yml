@@ -1,6 +1,10 @@
 name: "run all"
 
-on: [push]
+on:
+  push:
+  schedule:
+    - cron:  '*/30 * * * *'
+
 
 jobs:
   ## Libp2p Interop
