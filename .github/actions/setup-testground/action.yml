@@ -50,7 +50,8 @@ runs:
       shell: bash
 
     - name: Wait until InfluxDB ready
-      run: testground-stability/.github/wait_until_influxdb_ready.sh
+      if: ${{ inputs.testground_endpoint == '' }}
+      run: ${{ github.action_path }}/wait_until_influxdb_ready.sh
       shell: bash
 
     - name: Configure testground CLI
