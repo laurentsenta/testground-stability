@@ -27,7 +27,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: testground
-          repository: testground/testground
+          repository: laurentsenta/testground
+          ref: fix/race-condition-on-outcomes
 
       - name: Setup Go
         uses: actions/setup-go@v2
