@@ -1,3 +1,4 @@
+use rand::Rng;
 use std::borrow::Cow;
 
 use tokio_stream::StreamExt;
@@ -9,6 +10,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     match client.run_parameters().test_case.as_str() {
         "example" => example(client).await,
         "publish-subscribe" => publish_subscribe(client).await,
+        "crash-on-purpose" => crash_on_purpose(client).await,
         _ => panic!("Unknown test case: {}", client.run_parameters().test_case),
     }
 }
@@ -70,4 +72,30 @@ async fn publish_subscribe(
         }
     }
     Ok(())
+}
+
+async fn crash_on_purpose(
+    client: testground::client::Client,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let mut rng = rand::thread_rng();
+    let x = rng.gen_range(0..3);
+
+    match x {
+        0 => {
+            client.record_message("leaving on purpose");
+            Err(std::io::Error::new(
+                std::io::ErrorKind::Other,
+                "leaving on purpose",
+            ))?
+        }
+        1 => {
+            client.record_message("failing on purpose");
+            client.record_failure(format!("crash on purpose")).await?;
+            Ok(())
+        }
+        _ => {
+            client.record_message("panicking on purpose");
+            panic!();
+        }
+    }
 }
