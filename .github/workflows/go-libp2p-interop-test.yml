@@ -32,8 +32,6 @@ jobs:
     uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
-      custom_git_target: github.com/${{ github.event.pull_request.head.repo.full_name || github.event.repository.full_name }}
-      custom_git_reference: ${{ github.event.pull_request.head.sha || github.sha }}
 
   run-ping-interop-cross-version-7:
     uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
@@ -105,4 +103,152 @@ jobs:
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
+  run-ping-interop-cross-version-21:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
 
+  run-ping-interop-cross-version-22:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-23:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-24:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-25:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-26:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-27:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-28:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-29:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-30:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-31:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-32:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-33:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-34:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-35:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-36:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-37:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-38:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-39:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-40:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-41:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-42:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-43:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-44:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-45:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-46:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-47:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-48:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-49:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
+
+  run-ping-interop-cross-version-50:
+    uses: "singulargarden/test-plans/.github/workflows/run-composition.yml@master"
+    with:
+      composition_file: "ping/_compositions/go-cross-versions.toml"
