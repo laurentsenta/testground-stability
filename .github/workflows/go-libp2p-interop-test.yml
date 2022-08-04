@@ -4,251 +4,251 @@ name: Go Libp2p - Interoperability Testing
 jobs:
   # anchors are not supported.
   run-ping-interop-cross-version-1:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-2:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-3:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-4:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-5:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-6:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-7:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-8:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-9:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-10:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-11:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-12:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-13:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-14:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-15:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-16:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-17:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-18:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-19:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-20:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-21:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-22:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-23:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-24:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-25:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-26:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-27:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-28:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-29:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-30:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-31:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-32:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-33:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-34:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-35:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-36:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-37:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-38:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-39:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-40:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-41:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-42:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-43:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-44:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-45:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-46:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-47:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-48:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-49:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
 
   run-ping-interop-cross-version-50:
-    uses: "libp2p/test-plans/.github/workflows/run-composition.yml@master"
+    uses: "laurentsenta/test-plans/.github/workflows/run-composition.yml@master"
     with:
       composition_file: "ping/_compositions/go-cross-versions.toml"
