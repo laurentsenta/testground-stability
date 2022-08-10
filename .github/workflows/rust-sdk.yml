@@ -1,5 +1,5 @@
 # Based on https://github.com/actions-rs/meta/blob/master/recipes/quickstart.md
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 name: Rust SDK - Examples
 
 jobs:
